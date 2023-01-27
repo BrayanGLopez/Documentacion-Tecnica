@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentacion Tecnica</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>Documentación SQL basico</header>
+        <ul>
+            <li><a href="#Introduccion" class="nav-link">Introducción</a></li>
+            <li><a href="#Conceptos_Previos" class="nav-link">Conceptos Previos</a></li>
+            <li><a href="#Caracteristicas_principales" class="nav-link">Caracteristicas principales</a></li>
+            <li><a href="#Sentencias_Basicas" class="nav-link">Sentencias Basicas</a></li>
+            <li><a href="#Select" class="nav-link">Select</a></li>
+            <li><a href="#Create" class="nav-link">Create</a></li>
+            <li><a href="#Insert" class="nav-link">Insert</a></li>
+            <li><a href="#Update" class="nav-link">Update</a></li>
+            <li><a href="#Delete" class="nav-link">Delete</a></li>
+        </ul>
+        <div class="firma">
+            <p>Brayan López (Bogotá D.C. - Colombia)</p>
+        </div>
+    </nav>
+
+    <main id="main-doc">
+        <section class="main-section" id="Introducción">
+            <header>Introducción</header>
+            <p>SQL (por sus siglas en inglés Structured Query Language; en español lenguaje de consulta estructurada) es
+                un lenguaje de dominio específico, diseñado para administrar, y recuperar información de sistemas de
+                gestión de bases de datos relacionales. Una de sus principales características es el manejo del
+                álgebra y el cálculo relacional para efectuar consultas con el fin de recuperar, de forma sencilla,
+                información de bases de datos, así como realizar cambios en ellas.</p>
+            <p>Originalmente basado en el álgebra relacional y en el cálculo relacional, SQL consiste en un lenguaje de
+                definición de datos, un lenguaje de manipulación de datos y un lenguaje de control de datos. El alcance
+                de SQL incluye la inserción de datos, consultas, actualizaciones y borrado, la creación y modificación
+                de esquemas y el control de acceso a los datos. También el SQL a veces se describe como un lenguaje
+                declarativo, también incluye elementos procesales.</p>
+            <p>SQL fue uno de los primeros lenguajes comerciales para el modelo relacional de Edgar Frank Codd como se
+                describió en su artículo de investigación de 1970 El modelo relacional de datos para grandes bancos de
+                datos compartidos. A pesar de no adherirse totalmente al modelo relacional descrito por Codd, pasó a ser
+                el lenguaje de base de datos más usado.</p>
+            <p>SQL pasó a ser el estándar del Instituto Nacional Estadounidense de Estándares (ANSI) en 1986 y de la
+                Organización Internacional de Normalización (ISO) en 1987. Desde entonces, el estándar ha sido revisado
+                para incluir más características. A pesar de la existencia de ambos estándares, la mayoría de los
+                códigos SQL no son completamente portables entre sistemas de bases de datos diferentes sin otros
+                ajustes.</p>
+            <p class="subtitulo">Tipos de datos principales</p>
+            <ul>
+                <li>Nùmeros enteros</li>
+                <code><span>TYNYINT(tamaño):</span> -128 a 127 normal. 0 a 255 SIN FIRMAR *. La cantidad máxima de dígitos se puede especificar entre paréntesis</code>
+                <code><span>SMALLINT(tamaño):</span> -32768 a 32767 normal. 0 a 65535 SIN FIRMAR *. La cantidad máxima de dígitos se puede especificar entre paréntesis</code>
+                <code><span>MEDIUMINT(tamaño):</span> -8388608 a 8388607 normal. 0 a 16777215 SIN FIRMAR *. La cantidad máxima de dígitos se puede especificar entre paréntesis</code>
+                <code><span>INT(tamaño):</span> -2147483648 a 2147483647 normal. 0 a 4294967295 SIN FIRMAR *. La cantidad máxima de dígitos se puede especificar entre paréntesis</code>
+                <code><span>BIGINT(tamaño):</span> -9223372036854775808 a 9223372036854775807 normal. 0 a 18446744073709551615 SIN FIRMAR *. La cantidad máxima de dígitos se puede especificar entre paréntesis</code>
+                <li>Nùmeros en punto flotante</li>
+                <code><span>FLOAT(tamaño, d):</span> Un pequeño número con un punto decimal flotante. La cantidad máxima de dígitos se puede especificar en el parámetro de tamaño. El número máximo de dígitos a la derecha del punto decimal se especifica en el parámetro d</code>
+                <code><span>DOBLE (tamaño, d):</span> Un número grande con un punto decimal flotante. La cantidad máxima de dígitos se puede especificar en el parámetro de tamaño. El número máximo de dígitos a la derecha del punto decimal se especifica en el parámetro d</code>
+                <code><span>DECIMAL (tamaño, d):</span> Un DOBLE almacenado como una cadena, lo que permite un punto decimal fijo. La cantidad máxima de dígitos se puede especificar en el parámetro de tamaño. El número máximo de dígitos a la derecha del punto decimal se especifica en el parámetro d</code>
+                <li>Fechas y tiempos</li>
+                <code><span>DATE ():</span> Una fecha. Formato: AAAA-MM-DD Nota: el rango admitido es de '1000-01-01' a '9999-12-31'</code>
+                <code><span>DATETIME ():</span> * Una combinación de fecha y hora. Formato: AAAA-MM-DD HH: MI: SS Nota: el rango admitido es de '1000-01-01 00:00:00' a '9999-12-31 23:59:59'</code>
+                <code><span>TIMESTAMP ():</span> * Una marca de tiempo. Los valores de TIMESTAMP se almacenan como el número de segundos desde la época de Unix ('1970-01-01 00:00:00' UTC). Formato: AAAA-MM-DD HH: MI: SS Nota: el rango admitido es de '1970-01-01 00:00:01' UTC a '2038-01-09 03:14:07' UTC</code>
+                <code><span>TIME ():</span> Un tiempo. Formato: HH: MI: SS Nota: el rango admitido es de '-838: 59: 59' a '838: 59: 59'</code>
+                <code><span>YEAR ():</span> Un año en formato de dos o cuatro dígitos. Nota: Valores permitidos en formato de cuatro dígitos: de 1901 a 2155. Valores permitidos en formato de dos dígitos: 70 a 69, que representan los años de 1970 a 2069</code>
+                <li>Cadena de caracteres</li>
+                <code><span>CHAR (tamaño):</span> Tiene una cadena de longitud fija (puede contener letras, números y caracteres especiales). El tamaño fijo se especifica entre paréntesis. Puede almacenar hasta 255 caracteres</code>
+                <code><span>VARCHAR (tamaño):</span> Tiene una cadena de longitud variable (puede contener letras, números y caracteres especiales). El tamaño máximo se especifica entre paréntesis. Puede almacenar hasta 255 caracteres. Nota: si agrega un valor mayor que 255, se convertirá en un tipo de texto</code>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Conceptos_Previos">
+            <header>Conceptos Previos</header>
+            <p class="subtitulo">Base de Datos Relacional</p>
+            <p>Una base de datos relacional es, en esencia, un conjunto de tablas (o relaciones) formadas por filas
+                (registros) y columnas (campos); así, cada registro (cada fila) tiene una ID única, denominada clave y
+                las columnas de la tabla contienen los atributos de los datos. Cada registro tiene normalmente un valor
+                para cada atributo, lo que simplifica la creación de relaciones entre los puntos de datos.</p>
+            <p class="subtitulo">Modelo entidad-relación</p>
+            <p>Un diagrama entidad-relación, también conocido como modelo entidad relación o ERD, es un tipo de diagrama
+                de flujo que ilustra cómo las "entidades", como personas, objetos o conceptos, se relacionan entre sí
+                dentro de un sistema. Los diagramas ER se usan a menudo para diseñar o depurar bases de datos
+                relacionales en los campos de ingeniería de software, sistemas de información empresarial, educación e
+                investigación. También conocidos como los ERD o modelos ER, emplean un conjunto definido de símbolos,
+                tales como rectángulos, diamantes, óvalos y líneas de conexión para representar la interconexión de
+                entidades, relaciones y sus atributos. Son un reflejo de la estructura gramatical y emplean entidades
+                como sustantivos y relaciones como verbos.</p>
+            <p class="subtitulo">Modelo Relacional</p>
+            <p>El modelo relacional, para el modelado y la gestión de bases de datos, es un modelo de datos basado en la
+                lógica de predicados y en la teoría de conjuntos.</p>
+            <p>Tras ser postuladas sus bases en 1970 por Edgar Frank Codd, de los laboratorios IBM en San José
+                (California), no tardó en consolidarse como un nuevo paradigma en los modelos de base de datos.</p>
+            <p>Su idea fundamental es el uso de relaciones. Estas relaciones podrían considerarse en forma lógica como
+                conjuntos de datos llamados tuplas. Pese a que esta es la teoría de las bases de datos relacionales
+                creadas por Codd, la mayoría de las veces se conceptualiza de una manera más fácil de imaginar, pensando
+                en cada relación como si fuese una tabla que está compuesta por registros (cada fila de la tabla sería
+                un registro o “tupla”) y columnas (también llamadas “campos”).</p>
+            <p>Es el modelo más utilizado en la actualidad para modelar problemas reales y administrar datos
+                dinámicamente.</p>
+            <p>El modelo relacional desarrolla un esquema de base de datos (data base schema) a partir del cual se podrá
+                realizar el modelo físico o de implementación en el DBMS.</p>
+            <p>Este modelo esta basado en que todos los datos están almacenados en tablas (entidades/relaciones) y cada
+                una de estas es un conjunto de datos, por tanto una base de datos es un conjunto de relaciones. La
+                agrupación se origina en la tabla: tabla -> fila (tupla) -> campo (atributo)</p>
+
+            <ul>
+                <li>Entidad</li>
+                <code>Representa una “cosa”, "objeto", o "concepto" del mundo real con existencia independiente, es decir, se diferencia únicamente de otro objeto o cosa, incluso siendo del mismo tipo, o una misma entidad.</code>
+                <li>Atributos</li>
+                <code>Los atributos son las características que definen o identifican a una entidad. Éstas pueden ser muchas, y el diseñador sólo utiliza o implementa las que considere más relevantes.
+                        En un conjunto de entidades del mismo tipo, cada entidad tiene valores específicos asignados para cada uno de sus atributos, de esta forma, es posible su identificación unívoca.</code>
+                <li>Relación</li>
+                <code>Describe cierta dependencia entre entidades o permite la asociación de las mismas.</code>
+                <li>Claves</li>
+                <code>Es un subconjunto del conjunto de atributos comunes en una colección de entidades, que permite identificar inequívocamente cada una de las entidades pertenecientes a dicha colección. Asimismo, permiten distinguir entre sí las relaciones de un conjunto de relaciones.</code>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Caracteristicas_principales">
+            <header>Caracteristicas principales</header>
+            <p>SQL es un lenguaje de acceso a bases de datos que explota la flexibilidad y potencia de los sistemas
+                relacionales y permite así gran variedad de operaciones.
+                Es un lenguaje declarativo de "alto nivel" o "de no procedimiento" que, gracias a su fuerte base teórica
+                y su orientación al manejo de conjuntos de registros —y no a registros individuales— permite una alta
+                productividad en codificación y la orientación a objetos. De esta forma, una sola sentencia puede
+                equivaler a uno o más programas que se utilizarían en un lenguaje de bajo nivel orientado a registros.
+                SQL también tiene las siguientes características:</p>
+            <ul>
+                <li>Lenguaje de definición de datos</li>
+                <code>El LDD de SQL proporciona comandos para la definición de esquemas de relación, borrado de relaciones y modificaciones de los esquemas de relación</code>
+                <li>Lenguaje interactivo de manipulación de datos</li>
+                <code>El LMD de SQL incluye lenguajes de consultas basado tanto en álgebra relacional como en cálculo relacional de tuplas.</code>
+                <li>Integridad</li>
+                <code>El LDD de SQL incluye comandos para especificar las restricciones de integridad que deben cumplir los datos almacenados en la base de datos.</code>
+                <li>Definición de vistas</li>
+                <code>El LDD incluye comandos para definir las vistas.</code>
+                <li>Control de transacciones</li>
+                <code>SQL tiene comandos para especificar el comienzo y el final de una transacción.</code>
+                <li>SQL incorporado y dinámico</li>
+                <code>Esto quiere decir que se pueden incorporar instrucciones de SQL en lenguajes de programación como: C++, C, Java, PHP, COBOL, Pascal y Fortran.</code>
+                <li>Autorización</li>
+                <code>El LDD incluye comandos para especificar los derechos de acceso a las relaciones y a las vistas.</code>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Sentencias_Basicas">
+            <header>Sentencias Basicas</header>
+            <p>El lenguaje de definición de datos (en inglés Data Definition Language, o DDL), es el que se encarga de
+                la modificación de la estructura de los objetos de la base de datos. Incluye órdenes para modificar,
+                borrar o definir las tablas en las que se almacenan los datos de la base de datos. Existen cuatro
+                operaciones básicas: CREATE, ALTER, DROP y TRUNCATE</p>
+            <ul>
+                <li>CREATE</li>
+                <code>Este comando permite crear objetos de datos, como nuevas bases de datos, tablas, vistas y procedimientos almacenados.</code>
+                <li>ALTER</li>
+                <code>Este comando permite modificar la estructura de una tabla u objeto. Se pueden agregar/quitar campos a una tabla, modificar el tipo de un campo, agregar/quitar índices a una tabla, modificar un trigger, etc.</code>
+                <li>DROP</li>
+                <code>Este comando elimina un objeto de la base de datos. Puede ser una tabla, vista, índice, trigger, función, procedimiento o cualquier objeto que el motor de la base de datos soporte. Se puede combinar con la sentencia ALTER.</code>
+                <li>TRUNCATE</li>
+                <code>Este comando solo aplica a tablas y su función es borrar el contenido completo de la tabla especificada. La ventaja sobre el comando DELETE, es que si se quiere borrar todo el contenido de la tabla, es mucho más rápido, especialmente si la tabla es muy grande. La desventaja es que TRUNCATE solo sirve cuando se quiere eliminar absolutamente todos los registros, ya que no se permite la cláusula WHERE. Si bien, en un principio, esta sentencia parecería ser DML (Lenguaje de Manipulación de Datos), es en realidad una DDL, ya que internamente, el comando TRUNCATE borra la tabla y la vuelve a crear y no ejecuta ninguna transacción.</code>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Select">
+            <header>Select</header>
+            <p>Como una frase, una instrucción SQL tiene cláusulas. Cada cláusula realiza una función de la instrucción
+                SQL. Algunas cláusulas son necesarias en una instrucción SELECT. En la siguiente tabla, se enumeran las
+                cláusulas SQL más comunes.</p>
+            <ul>
+                <li>SELECT</li>
+                    <code>Muestra una lista de los campos que contienen datos de interés.</code>
+                <li>FROM</li>
+                    <code>Muestra las tablas que contienen los campos de la cláusula SELECT.</code>
+                <li>WHERE</li>
+                    <code>Especifica los criterios de campo que cada registro debe cumplir para poder ser incluido en los resultados.</code>
+                <li>ORDER BY</li>
+                    <code>Especifica la forma de ordenar los resultados.</code>
+                <li>GROUP BY</li>
+                    <code>En una instrucción SQL que contiene funciones de agregado, muestra los campos que no se resumen en la cláusula SELECT.</code>
+                <li>HAVING</li>
+                    <code>En una instrucción SQL que contiene funciones de agregado, especifica las condiciones que se aplican a los campos que se resumen en la instrucción SELECT.</code>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Create">
+            <header>Create</header>
+            <p>Este comando permite crear objetos de datos, como nuevas bases de datos, tablas, vistas y procedimientos almacenados.</p>
+            <ul>
+                <li>Create database</li>
+                    <code>CREATE DATABASE nombre_base_de_datos;</code>
+                <li>Create table</li>
+                    <code>CREATE TABLE nombre_tabla(definicion de la tabla);</code>
+                <li>Create view</li>
+                    <code>CREATE VIEW nombre_vista(definicion de la vista);</code>
+                <li>Create procedure/funtion</li>
+                    <code>CREATE PROCEDURE nombre_procedimiento(definicion del procedimiento);</code>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Insert">
+            <header>Insert</header>
+            <p>Una sentencia INSERT de SQL agrega uno o más registros a una (y solo una) tabla en una base de datos relacional.</p>
+            <ul>
+                <li>Forma básica</li>
+                    <code>INSERT INTO
+                        tabla(columnaA, [columnaB, ...])
+                    VALUES
+                        ('valor1', ['valor2', ...]);</code>
+                <li>Ejemplo</li>
+                    <code>INSERT INTO agenda_telefonica (nombre, numero)
+                        VALUES ('Roberto Jeldrez', 4886850);</code>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Update">
+            <header>Update</header>
+            <p>Una sentencia UPDATE de SQL es utilizada para modificar los valores de un conjunto de registros existentes en una tabla.</p>
+            <ul>
+                <li>Forma básica</li>
+                    <code>UPDATE table_name
+                        SET column1 = value1, column2 = value2, ...
+                        WHERE condition;</code>
+                <li>Ejemplo</li>
+                    <code>UPDATE My_table SET field1 = 'updated value' WHERE field2 = 'N';</code>
+            </ul>
+        </section>
+
+        <section class="main-section" id="Delete">
+            <header>Delete</header>
+            <p>Una sentencia DELETE de SQL borra uno o más registros existentes en una tabla.</p>
+            <ul>
+                <li>Forma básica</li>
+                    <code>DELETE FROM tabla WHERE columna1 = 'valor1';</code>
+                <li>Ejemplo</li>
+                    <code>DELETE FROM mi_tabla WHERE columna2 = 'N';</code>                   
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
